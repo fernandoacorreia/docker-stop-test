@@ -15,12 +15,14 @@ def get_process_title():
     else:
         return "test"
 
-def print_flush(title, s):
-    print("[%s] %s" % (title, s))
-    sys.stdout.flush()
+def output(title, s):
+    msg = "[%s] %s\n" % (title, s)
+    f = open(out_file, 'a')
+    f.write(msg)
+    f.close()
 
 def handler(signum, frame):
-    print_flush(title, 'GOT SIGNAL {}'.format(signum))
+    output(title, 'GOT SIGNAL {}'.format(signum))
     sys.exit(1)
 
 def write_pid(pid, pid_file):
@@ -30,14 +32,16 @@ def write_pid(pid, pid_file):
 
 parser = argparse.ArgumentParser()
 parser.add_argument("title", help="process title")
-parser.add_argument("pidfile", help="PID file path")
+parser.add_argument("outdir", help="output directory")
 args = parser.parse_args()
 title = args.title
-pid_file = args.pidfile
+out_dir = args.outdir
+pid_file = out_dir + "/pid"
 pid = os.getpid()
 write_pid(pid, pid_file)
+out_file = out_dir + "/output"
 
 signal.signal(signal.SIGTERM, handler)
-print_flush(title, "started with PID %d" % (pid))
+output(title, "started with PID %d" % (pid))
 time.sleep(30 * 60)
-print_flush(title, 'finished sleeping')
+output(title, 'finished sleeping')
