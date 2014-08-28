@@ -1,0 +1,13 @@
+#!/bin/bash
+set -o nounset -o errexit
+
+echo "[bash] starting main process in background"
+pidfile=`mktemp`
+src/test.py "test" "$pidfile" &
+echo "[bash] waiting"
+sleep 5s
+pid=`cat $pidfile`
+echo "[bash] process launched with pid $pid"
+echo "[bash] killing process"
+kill "$pid"
+echo "[bash] done"
