@@ -5,7 +5,7 @@ echo "[bash] running in docker with PID 1"
 src_path=`readlink -e src`
 tmp_dir=`mktemp -d`
 echo "[bash] temporary directory: $tmp_dir"
-cid=`docker run -d --volume $src_path:/mnt/src --volume $tmp_dir:/mnt/out python /mnt/src/test.py "test" /mnt/out`
+cid=`docker run -d --volume $src_path:/mnt/src --volume $tmp_dir:/mnt/out python /mnt/src/interruptable.py "test" /mnt/out`
 echo "[bash] docker container $cid launched"
 echo "[bash] waiting"
 sleep 5s

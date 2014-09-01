@@ -4,7 +4,7 @@ set -o nounset -o errexit
 echo "[bash] starting main process in background"
 tmp_dir=`mktemp -d`
 echo "[bash] temporary directory: $tmp_dir"
-src/test.py "test" "$tmp_dir" &
+src/interruptable.py "test" "$tmp_dir" &
 echo "[bash] waiting"
 sleep 5s
 pidfile="$tmp_dir/pid"

@@ -15,7 +15,7 @@ exit status, and what is the exit status of the containing docker process.
 Native:
 
 ```
-$ bin/test-native
+$ bin/interruptable/test-native
 [bash] starting main process in background
 [bash] temporary directory: /tmp/tmp.3q474f8Xhy
 [bash] waiting
@@ -29,7 +29,7 @@ $ bin/test-native
 Docker with PID 1:
 
 ```
-$ bin/test-docker-pid-1
+$ bin/interruptable/test-docker-pid-1
 [bash] running in docker with PID 1
 [bash] temporary directory: /tmp/tmp.w8WM8kvXPf
 [bash] docker container 92b1f43a03c9ae0fc68c8ec5b0ff9eb403201e21b1d8b4ac434a15363970b24d launched
@@ -45,7 +45,7 @@ $ bin/test-docker-pid-1
 Docker with phusion-baseimage:
 
 ```
-$ bin/test-phusion-baseimage-python
+$ bin/interruptable/test-phusion-baseimage-python
 [bash] building docker image
 Sending build context to Docker daemon  2.56 kB
 Sending build context to Docker daemon
