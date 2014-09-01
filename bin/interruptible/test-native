@@ -1,4 +1,4 @@
 #!/bin/bash
 set -o nounset -o errexit
 
-bin/common/test-native interruptable
+bin/common/test-native interruptible

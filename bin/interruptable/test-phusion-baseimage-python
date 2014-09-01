@@ -1,4 +1,0 @@
-#!/bin/bash
-set -o nounset -o errexit
-
-bin/common/test-phusion-baseimage-python interruptable

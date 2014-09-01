@@ -15,27 +15,27 @@ exit status, and what is the exit status of the containing docker process.
 Native:
 
 ```
-$ bin/interruptable/test-native
+$ bin/interruptible/test-native
 [bash] starting main process in background
-[bash] temporary directory: /tmp/tmp.3q474f8Xhy
+[bash] temporary directory: /tmp/tmp.VHGOJIeyWq
 [bash] waiting
-[bash] process launched with pid 6359
+[bash] process launched with pid 8075
 [bash] killing process
 [bash] program output:
-[test] started with PID 6359
+[test] started with PID 8075
 [test] GOT SIGNAL 15
 ```
 
 Docker with PID 1:
 
 ```
-$ bin/interruptable/test-docker-pid-1
+$ bin/interruptible/test-docker-pid-1
 [bash] running in docker with PID 1
-[bash] temporary directory: /tmp/tmp.w8WM8kvXPf
-[bash] docker container 92b1f43a03c9ae0fc68c8ec5b0ff9eb403201e21b1d8b4ac434a15363970b24d launched
+[bash] temporary directory: /tmp/tmp.Bbjx9D4ewk
+[bash] docker container 848e0d7b961215ed4dd9f2bbba6a2a64d566e82454918c17aeb3257d6636d789 launched
 [bash] waiting
 [bash] stopping docker container
-92b1f43a03c9ae0fc68c8ec5b0ff9eb403201e21b1d8b4ac434a15363970b24d
+848e0d7b961215ed4dd9f2bbba6a2a64d566e82454918c17aeb3257d6636d789
 [bash] container exit code:         "ExitCode": 1,
 [bash] program output:
 [test] started with PID 1
@@ -45,18 +45,18 @@ $ bin/interruptable/test-docker-pid-1
 Docker with phusion-baseimage:
 
 ```
-$ bin/interruptable/test-phusion-baseimage-python
+$ bin/interruptible/test-phusion-baseimage-python
 [bash] building docker image
 Sending build context to Docker daemon  2.56 kB
 Sending build context to Docker daemon
 [bash] running in docker with phusion-baseimage
-[bash] temporary directory: /tmp/tmp.fF8bPOHUf2
-[bash] docker container 64b03d4b21349139c56bbd07b875f18875d917294971ab4c6b120786bedb8ac2 launched
+[bash] temporary directory: /tmp/tmp.L5bpdHoquV
+[bash] docker container c963d9816f722be99013914660aefccf1a68570ab2a31b6df2d11a939acae432 launched
 [bash] waiting
 [bash] stopping docker container
-64b03d4b21349139c56bbd07b875f18875d917294971ab4c6b120786bedb8ac2
+c963d9816f722be99013914660aefccf1a68570ab2a31b6df2d11a939acae432
 [bash] container exit code:         "ExitCode": 2,
 [bash] program output:
-[test] started with PID 100
+[test] started with PID 97
 [test] GOT SIGNAL 15
 ```
