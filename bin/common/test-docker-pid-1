@@ -5,13 +5,18 @@ echo "[bash] running in docker with PID 1"
 src_path=`readlink -e src`
 tmp_dir=`mktemp -d`
 echo "[bash] temporary directory: $tmp_dir"
-cid=`docker run -d --volume $src_path:/mnt/src --volume $tmp_dir:/mnt/out python /mnt/src/$1.py "test" /mnt/out`
+echo "[bash] starting docker as daemon"
+cid="test-`date +%s`"
+daemon -i --errlog="$tmp_dir/daemon-errlog" -- docker run --name="$cid" --volume $src_path:/mnt/src --volume $tmp_dir:/mnt/out python /mnt/src/$1.py "test" /mnt/out
 echo "[bash] docker container $cid launched"
 echo "[bash] waiting"
 sleep 5s
-echo "[bash] stopping docker container"
+echo "[bash] stopping docker container $cid"
 docker stop "$cid"
+echo "[bash] docker container stopped"
 exit_code=`docker inspect $cid | grep ExitCode`
 echo "[bash] container exit code: $exit_code"
 echo "[bash] program output:"
 cat "$tmp_dir/output"
+echo "[bash] daemon error log:"
+cat "$tmp_dir/daemon-errlog"

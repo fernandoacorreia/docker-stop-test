@@ -10,7 +10,7 @@ sleep 5s
 pidfile="$tmp_dir/pid"
 pid=`cat $pidfile`
 echo "[bash] process launched with pid $pid"
-echo "[bash] killing process"
+echo "[bash] killing process $pid"
 kill "$pid"
 echo "[bash] program output:"
 cat "$tmp_dir/output"

@@ -1,0 +1,4 @@
+#!/bin/bash
+set -o nounset -o errexit
+
+bin/common/test-native non-interruptible
