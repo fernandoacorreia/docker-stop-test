@@ -1,16 +1,4 @@
 #!/bin/bash
 set -o nounset -o errexit
 
-echo "[bash] starting main process in background"
-tmp_dir=`mktemp -d`
-echo "[bash] temporary directory: $tmp_dir"
-src/interruptable.py "test" "$tmp_dir" &
-echo "[bash] waiting"
-sleep 5s
-pidfile="$tmp_dir/pid"
-pid=`cat $pidfile`
-echo "[bash] process launched with pid $pid"
-echo "[bash] killing process"
-kill "$pid"
-echo "[bash] program output:"
-cat "$tmp_dir/output"
+bin/common/test-native interruptable
